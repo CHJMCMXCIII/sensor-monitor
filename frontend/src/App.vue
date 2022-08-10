@@ -1,15 +1,15 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <Chart />
+  <SensorChart />
 </template>
 
 <script>
-import Chart from './components/Chart.vue'
+import SensorChart from './components/SensorChart.vue'
 
 export default {
   name: 'App',
   components: {
-    Chart
+    SensorChart
   }
 }
 </script>
