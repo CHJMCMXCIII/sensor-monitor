@@ -63,6 +63,7 @@ export default {
                 .call(xAxis)
             svg.append("g")
                 .attr("class", "y axis")
+                .call(yAxis)
 
             svg.append("path")
                 .datum(data)

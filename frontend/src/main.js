@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import store from './store'
-import socketPlugin from 'socket.js'
+import socketPlugin from './plugins/socket.js'
 import { host } from './config'
 
 createApp(App)

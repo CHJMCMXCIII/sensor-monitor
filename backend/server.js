@@ -16,7 +16,7 @@ const mongoose = require('mongoose')
 const USER = 'user1'
 const PWD = '2166'
 const HOST = 'localhost:27017'
-const db = 'sensor'
+const DB = 'sensor'
 const SENSOR_FILE_PATH = path.join(__dirname, './data/data.csv')
 const mongodbURL = `mongodb://${USER}:${PWD}@${HOST}/${DB}`
 let userList = [], idx = 0
@@ -26,7 +26,6 @@ const main = async () => {
     mongoose.connect(mongodbURL)
         .then(() => console.log(`MONGO DB 가 ${util.getDate()} 에 연결되었어요.`)) // util.getDate ??
         .catch((err) => console.error(err))
-    mongoose.set('useFindAndModify', false)
 
     const sensorList = await util.readCSV(SENSOR_FILE_PATH)
     const len = sensorList.length
@@ -46,14 +45,14 @@ const main = async () => {
     })
 
     idx = await sensorController.sendDataAndSaveDB(io, sensorList, idx)
-    console.log(`현재 센서 정보를 유저에게 보내고 DB에 저장하세요. :: ${uteil.getDate()} ${JSON.stringify(sensorList[idx])}`)
+    console.log(`현재 센서 정보를 유저에게 보내고 DB에 저장합니다. 1111 :: ${util.getDate()} ${JSON.stringify(sensorList[idx])}`)
     idx += 1
 
     const timeInterval = setInterval(async () => {
         // 1초마다 센서 데이터를 보내는 부분
         // constants에 정의한 간격을 받아와서 센서 데이터를 보내게 한다.
         idx = await sensorController.sendDataAndSaveDB(io, sensorList, idx)
-        console.log(`현재 센서 정보를 유저에게 보내고 DB에 저장하세요. :: ${uteil.getDate()} index = ${idx} ${JSON.stringify(sensorList[idx])}`)
+        console.log(`현재 센서 정보를 유저에게 보내고 DB에 저장합니다. :: ${util.getDate()} index = ${idx} ${JSON.stringify(sensorList[idx])}`)
         idx += 1
         if(idx === len) {
             console.log(`센서 모니터링 서버를 닫으세요. :: ${util.getDate()}`)
