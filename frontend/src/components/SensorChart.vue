@@ -88,7 +88,7 @@ export default {
                     tooltip.transition()
                         .duration(200)
                         .style("opacity", 1)
-                    const content = `<p>${props.text}</p> <p>[${timeFormat(d.time)}</p><h2>${d[key]}</h2>]`
+                    const content = `<p>${props.text}</p> <p>[${timeFormat(d.time)}]</p><h2>${d[key]}</h2>`
 
                     tooltip
                         .html(content)
